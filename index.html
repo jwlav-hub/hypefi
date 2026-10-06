@@ -9,138 +9,96 @@
   <style>
     .hero-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 64px;
-      align-items: start;
-      position: relative;
-      z-index: 1;
+      align-items: center;
     }
-    .hero-form-card {
-      background: rgba(30,33,33,0.55);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(242,242,245,0.14);
-      border-radius: var(--radius-lg);
-      padding: 28px 32px 24px;
-      box-shadow: var(--shadow-xl);
-      position: relative;
-      overflow: hidden;
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .hero-pill {
+      font-size: .72rem;
+      padding: 6px 12px;
+      border: 1px solid var(--navy-700);
+      border-radius: 2px;
+      color: var(--blue-soft);
+      background: rgba(122,163,207,.06);
     }
-    .hero-form-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--teal), var(--slate-purple));
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    .hero-note {
+      font-size: .9rem;
+      font-weight: 300;
+      color: var(--slate-300);
+      line-height: 1.75;
+      border-left: 2px solid var(--blue);
+      padding-left: 16px;
+      max-width: 560px;
     }
+    .hero-form-card { padding: 34px 34px 30px; }
     .hero-form-title {
       font-family: var(--font-display);
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--soft-white);
-      margin-bottom: 16px;
-    }
-    .hero-form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .hero-form-grid .full { grid-column: 1 / -1; }
-    /* Dark-theme inputs inside the hero card */
-    .hero-form-card .form-group label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(242,242,245,0.55);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--white);
       margin-bottom: 4px;
-      display: block;
     }
+    .hero-form-kicker {
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 10px;
+    }
+    .hero-form-intro { font-size: .86rem; font-weight: 300; color: var(--slate-300); margin-bottom: 22px; }
+    .hero-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hero-form-grid .full { grid-column: 1 / -1; }
+    .hero-form-card .form-group { gap: 6px; }
+    .hero-form-card .form-group > label { color: var(--slate-300); font-size: .62rem; }
     .hero-form-card input,
     .hero-form-card textarea {
-      background: rgba(242,242,245,0.07);
-      border: 1px solid rgba(242,242,245,0.14);
-      color: var(--soft-white);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 13px;
-      width: 100%;
-      box-sizing: border-box;
-      transition: border-color 0.2s;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(159,176,199,.22);
+      color: var(--white);
+      padding: 10px 12px;
+      font-size: .86rem;
     }
     .hero-form-card input::placeholder,
-    .hero-form-card textarea::placeholder { color: rgba(242,242,245,0.28); }
+    .hero-form-card textarea::placeholder { color: var(--slate-500); opacity: 1; }
     .hero-form-card input:focus,
-    .hero-form-card textarea:focus {
-      outline: none;
-      border-color: var(--teal);
-    }
-    .hero-form-card textarea { resize: none; }
-    .hero-interest-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }
-    .hero-form-card .interest-opt {
-      background: rgba(242,242,245,0.06);
-      border: 1.5px solid rgba(242,242,245,0.13);
-      color: rgba(242,242,245,0.75);
-      padding: 7px 10px;
-      font-size: 12px;
-    }
-    .hero-form-card .interest-opt.selected {
-      border-color: var(--teal);
-      background: rgba(47,95,91,0.25);
-      color: var(--teal-light);
-    }
+    .hero-form-card textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(122,163,207,.14); }
+    .hero-form-card textarea { resize: none; min-height: 0; }
+    .hero-interest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .interest-opt {
       display: flex;
       align-items: center;
-      gap: 8px;
-      border-radius: 8px;
-      cursor: pointer;
+      gap: 9px;
+      padding: 9px 12px;
+      font-size: .8rem;
       font-weight: 500;
-      transition: border-color 0.2s, background 0.2s;
+      color: var(--slate-300);
+      border: 1px solid rgba(159,176,199,.22);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, color .2s;
     }
+    .interest-opt:hover { border-color: rgba(159,176,199,.45); }
     .interest-opt input { display: none; }
     .interest-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      border: 1.5px solid currentColor;
+      width: 6px; height: 6px;
+      border: 1px solid currentColor;
+      transform: rotate(45deg);
       flex-shrink: 0;
-      transition: background 0.2s;
+      transition: background .2s;
     }
-    .hero-form-card .interest-opt.selected .interest-dot { background: var(--teal-light); }
-    .btn-hero-send {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--teal);
-      color: var(--soft-white);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px;
-      border-radius: 10px;
-      margin-top: 14px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.01em;
-    }
-    .btn-hero-send:hover {
-      background: var(--teal-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(47,95,91,0.4);
-    }
+    .interest-opt.selected { border-color: var(--blue); background: rgba(122,163,207,.1); color: var(--blue-soft); }
+    .interest-opt.selected .interest-dot { background: var(--blue-soft); }
+    .btn-hero-send { width: 100%; margin-top: 20px; }
+    .btn-hero-send:disabled { cursor: default; background: rgba(122,163,207,.12); color: var(--blue-soft); }
     @media (max-width: 960px) {
       .hero-split { grid-template-columns: 1fr; gap: 48px; }
-      .hero-form-card { padding: 24px 20px; }
-      .hero-form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-form-card { padding: 28px 20px 24px; }
+      .hero-form-grid, .hero-interest-grid { grid-template-columns: 1fr; }
       .hero-form-grid .full { grid-column: 1; }
-      .hero-interest-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -150,77 +108,81 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-        <span class="logo-name">HypeFi</span>
+        <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+        <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
       </a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
       <a href="thesis-matching.html" class="nav-cta">Upload Your Deck</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="thesis-matching.html" class="nav-cta-mobile">Upload Your Deck</a>
   </div>
 
   <!-- ══ Page Hero ═══════════════════════════════════════════ -->
-  <section class="page-hero">
+  <section class="page-hero page-hero--home">
+    <canvas id="mesh-canvas" class="mesh-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-split">
 
         <!-- Left: Hero Copy -->
         <div class="page-hero-content">
           <div class="section-label">Outsourced CFO &amp; Capital Advisory</div>
-          <h1 class="section-title" style="max-width:560px">Strategic Finance, Fractional Cost.</h1>
-          <p class="section-sub" style="margin-bottom:20px">
+          <h1 class="section-title">Strategic Finance, Fractional Cost.</h1>
+          <p class="section-sub" style="margin-bottom:28px">
             HypeFi embeds as your fractional CFO — delivering institutional-grade financial strategy, investor-ready reporting, and hands-on capital advisory to startups, growth-stage companies, and small-to-medium-sized businesses at a fraction of the cost of an in-house hire.
           </p>
 
           <!-- Services pills -->
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Fractional CFO</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Financial Modeling</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Fundraising Strategy</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Budgeting &amp; Forecasting</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Capital Structure Advisory</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">KPI &amp; Metrics Frameworks</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Investor Relations</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Systems &amp; Automation</span>
-            <span style="font-size:12px;font-weight:600;color:rgba(242,242,245,0.85);background:rgba(242,242,245,0.08);border:1px solid rgba(242,242,245,0.15);border-radius:100px;padding:5px 13px">Board Reporting</span>
+          <div class="hero-pills">
+            <span class="hero-pill">Fractional CFO</span>
+            <span class="hero-pill">Financial Modeling</span>
+            <span class="hero-pill">Fundraising Strategy</span>
+            <span class="hero-pill">Budgeting &amp; Forecasting</span>
+            <span class="hero-pill">Capital Structure Advisory</span>
+            <span class="hero-pill">KPI &amp; Metrics Frameworks</span>
+            <span class="hero-pill">Investor Relations</span>
+            <span class="hero-pill">Systems &amp; Automation</span>
+            <span class="hero-pill">Board Reporting</span>
           </div>
 
           <!-- Pricing note -->
-          <p style="font-size:14px;color:rgba(242,242,245,0.55);line-height:1.75;border-left:2px solid var(--teal);padding-left:14px;margin:0">
+          <p class="hero-note">
             Engagements are structured to fit your stage and budget — available on a flexible project-based or hourly basis. Equity participation and success fees are considered in select cases where it makes sense for both sides.
           </p>
         </div>
 
         <!-- Right: Free Consultation Form -->
         <div class="hero-form-card">
-          <h3 class="hero-form-title">Begin Conversation</h3>
+          <div class="hero-form-kicker">Free Consultation</div>
+          <h3 class="hero-form-title">Begin a Conversation</h3>
+          <p class="hero-form-intro">Tell us where you are. We respond within one business day.</p>
           <div class="hero-form-grid">
             <div class="form-group">
               <label for="h-first">First Name</label>
-              <input type="text" id="h-first" placeholder="Joseph">
+              <input type="text" id="h-first">
             </div>
             <div class="form-group">
               <label for="h-last">Last Name</label>
-              <input type="text" id="h-last" placeholder="Laviolette">
+              <input type="text" id="h-last">
             </div>
             <div class="form-group full">
               <label for="h-email">Email Address</label>
-              <input type="email" id="h-email" placeholder="you@company.com">
+              <input type="email" id="h-email">
             </div>
             <div class="form-group full">
               <label for="h-company">Company / Organization</label>
-              <input type="text" id="h-company" placeholder="Acme Technologies">
+              <input type="text" id="h-company">
             </div>
             <div class="form-group full">
               <label>Area of Interest</label>
@@ -262,60 +224,76 @@
 
       </div>
     </div>
-    <div class="page-hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,20 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/>
-      </svg>
-    </div>
+    <a href="#solutions" class="scroll-cue" aria-label="Scroll to solutions">Scroll</a>
   </section>
 
   <!-- ══ Solutions ══════════════════════════════════════════ -->
-  <section class="solutions-section">
+  <section class="solutions-section" id="solutions">
     <div class="container">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Solutions</h2>
-      <p class="section-sub" style="margin-bottom:48px">End-to-end financial infrastructure for startups, growth-stage companies, and small-to-medium-sized businesses.</p>
+      <div class="work-grid">
 
-      <div class="solutions-grid">
-
-        <!-- Core Solutions -->
-        <div class="solution-panel">
-          <div class="solution-head">
-            <span class="solution-badge">◆</span>
-            <h3 class="solution-title">Core Solutions</h3>
-            <span class="solution-count">06</span>
-          </div>
-          <ul class="solution-list">
-            <li><span class="solution-num">01</span><span class="solution-item-name">Strategic Finance Advisory</span></li>
-            <li><span class="solution-num">02</span><span class="solution-item-name">Budgeting &amp; Forecasting</span></li>
-            <li><span class="solution-num">03</span><span class="solution-item-name">KPI &amp; Metrics Framework</span></li>
-            <li><span class="solution-num">04</span><span class="solution-item-name">Investor Relations &amp; Reporting</span></li>
-            <li><span class="solution-num">05</span><span class="solution-item-name">Systems Implementation</span></li>
-            <li><span class="solution-num">06</span><span class="solution-item-name">Digital Transformation</span></li>
+        <!-- Column 1 — Tech Stack -->
+        <div class="work-col">
+          <div class="section-label">Tech Stack</div>
+          <h2 class="section-title">Structure for Seamless Growth</h2>
+          <p class="body-copy">Most early finance stacks get assembled one tool at a time &mdash; a bank feed here, a payroll app there &mdash; and nobody owns how they fit together. So the books close late, the numbers disagree, and the forecast lives in a spreadsheet someone rebuilds every month.</p>
+          <p class="body-copy">We design the stack around how you will actually run the company: books that close on schedule, payroll and spend that post themselves, and reporting that reads straight off the ledger.</p>
+          <ul class="check-list">
+            <li>Scalable accounting system setup</li>
+            <li>Chart of accounts built for your business model</li>
+            <li>Bank, card and spend integrations</li>
+            <li>Payroll and HR systems</li>
+            <li>A month-end close that runs on schedule</li>
+            <li>Monthly investor-ready financials</li>
+            <li>Dashboards and KPIs fed from the books</li>
           </ul>
         </div>
 
-        <!-- Startup Ecosystem -->
-        <div class="solution-panel solution-panel--eco">
-          <div class="solution-head">
-            <span class="solution-badge">◈</span>
-            <h3 class="solution-title">Startup Ecosystem</h3>
-            <span class="solution-count">04</span>
+        <!-- Column 2 — Solutions -->
+        <div class="work-col">
+          <div class="section-label">Solutions</div>
+          <h2 class="section-title">Where We Step In</h2>
+          <p class="body-copy">Once the stack is in place, the numbers start working for you. These are the jobs founders and operators bring us most.</p>
+
+          <div class="work-lists">
+            <div>
+              <h3 class="work-list-title">Operating Finance</h3>
+              <ul class="work-list">
+                <li><strong>Strategic Finance Advisory</strong><span>Pricing, hiring and expansion decisions with a number attached.</span></li>
+                <li><strong>Budgeting &amp; Forecasting</strong><span>Rolling forecasts tied to actuals, so variance shows up monthly.</span></li>
+                <li><strong>KPI &amp; Metrics Framework</strong><span>The few metrics your stage is judged on, defined once and tracked.</span></li>
+                <li><strong>Investor Relations &amp; Reporting</strong><span>Board packs and investor updates built from the same books.</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="work-list-title">Capital Raising</h3>
+              <ul class="work-list">
+                <li><strong>Proforma Financial Modeling</strong><span>A model anchored to real numbers, in the format investors ask for.</span></li>
+                <li><strong>Fundraising Strategy</strong><span>How much to raise, from whom, and on what timeline.</span></li>
+                <li><strong>Capital Structure Advisory</strong><span>SAFEs, notes and priced rounds, with dilution modeled first.</span></li>
+                <li><strong>Presentation Deck Preparation</strong><span>A narrative and data room that hold up in diligence.</span></li>
+              </ul>
+            </div>
           </div>
-          <ul class="solution-list">
-            <li><span class="solution-num">01</span><span class="solution-item-name">Proforma Financial Modeling</span></li>
-            <li><span class="solution-num">02</span><span class="solution-item-name">Fundraising Strategy</span></li>
-            <li><span class="solution-num">03</span><span class="solution-item-name">Capital Structure Advisory</span></li>
-            <li><span class="solution-num">04</span><span class="solution-item-name">Presentation Deck Preparation</span></li>
-          </ul>
-          <div class="solution-cta">
-            <a href="thesis-matching.html" class="solution-cta-inner">
-              <span class="solution-cta-text">Raising capital?</span>
-              <span class="solution-cta-link">Upload Your Deck <span>→</span></span>
-            </a>
-          </div>
+
+          <a href="thesis-matching.html" class="text-link">Raising capital? Upload your deck <span aria-hidden="true">&rarr;</span></a>
         </div>
 
+      </div>
+
+      <!-- Platforms banner -->
+      <div class="platforms">
+        <p class="platforms-title">Expert support for all major finance platforms, including:</p>
+        <ul class="platforms-list">
+          <li>Xero</li>
+          <li>Rillet</li>
+          <li>Digits</li>
+          <li>QuickBooks</li>
+          <li>Stripe</li>
+          <li>Ramp</li>
+          <li>Rippling</li>
+          <li>Gusto</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -324,14 +302,13 @@
   <section class="engagement-section">
     <div class="container">
       <div class="section-label">Engagement Models</div>
-      <h2 class="section-title">How We Work Together</h2>
+      <h2 class="section-title">Let&rsquo;s Get to Work!</h2>
       <p class="section-sub">Flexible structures designed to match your stage, velocity, and budget — with no long-term lock-in.</p>
 
       <div class="engagement-grid">
 
         <div class="engagement-card">
           <h3 class="engagement-title">Fractional CFO</h3>
-          <p class="engagement-price">Monthly Retainer — Starting at $3,500/mo</p>
           <ul class="engagement-list">
             <li>Dedicated CFO embedded in your team</li>
             <li>Weekly leadership team syncs</li>
@@ -344,7 +321,6 @@
 
         <div class="engagement-card">
           <h3 class="engagement-title">Project-Based</h3>
-          <p class="engagement-price">Fixed Scope — Custom Quoted</p>
           <ul class="engagement-list">
             <li>Financial model build or rebuild</li>
             <li>Fundraising data room preparation</li>
@@ -357,7 +333,6 @@
 
         <div class="engagement-card">
           <h3 class="engagement-title">Capital Advisory</h3>
-          <p class="engagement-price">Retainer + Success Fee</p>
           <ul class="engagement-list">
             <li>Full fundraising campaign management</li>
             <li>Investor thesis & narrative development</li>
@@ -373,65 +348,50 @@
   </section>
 
   <!-- ══ Why HypeFi CFO ═══════════════════════════════════════ -->
-  <section style="background:var(--white);padding:100px 0;border-top:1px solid var(--border)">
+  <section class="section section--light">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div class="diff-grid">
         <div>
           <div class="section-label">The HypeFi Difference</div>
-          <h2 class="section-title" style="margin-bottom:24px">Finance Strategy Meets Capital Access</h2>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:20px">
+          <h2 class="section-title">Finance Strategy Meets Capital Access</h2>
+          <p class="body-copy">
             Most fractional CFOs stop at financial reporting. HypeFi goes further — combining rigorous financial management with an active capital formation engine. Your CFO and your fundraising strategy are built in the same system.
           </p>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:36px">
+          <p class="body-copy" style="margin-bottom:2.2rem">
             When it's time to raise, you're not starting over with a new advisor. The financial infrastructure we built together becomes the foundation of your investor materials — no translation layer, no relearning curve.
           </p>
-          <a href="about.html#contact" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--soft-white);font-size:15px;font-weight:600;padding:15px 32px;border-radius:10px;text-decoration:none;transition:background 0.2s">
-            Start a Conversation →
-          </a>
+          <a href="about.html#contact" class="btn-primary">Start a Conversation →</a>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">10×</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">More cost-effective than a full-time CFO hire at the same experience level</div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card-num">10<span class="unit">×</span></div>
+            <div class="stat-card-text">More cost-effective than a full-time CFO hire at the same experience level</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">48h</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Typical time to first deliverable from engagement kickoff</div>
+          <div class="stat-card">
+            <div class="stat-card-num">48<span class="unit">h</span></div>
+            <div class="stat-card-text">Typical time to first deliverable from engagement kickoff</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">AI</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Investor matching engine integrated directly into every capital raise engagement</div>
+          <div class="stat-card">
+            <div class="stat-card-num">AI</div>
+            <div class="stat-card-text">Investor matching engine integrated directly into every capital raise engagement</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">Seed<span style="font-size:18px">→B</span></div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Stage range we serve — pre-seed through Series B and growth equity</div>
+          <div class="stat-card">
+            <div class="stat-card-num">Seed<small>→B</small></div>
+            <div class="stat-card-text">Stage range we serve — pre-seed through Series B and growth equity</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ CTA ══════════════════════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="cta-inner">
-      <h2 class="cta-title">Ready to Build Your Financial Infrastructure?</h2>
-      <p class="cta-sub">Whether you need a fractional CFO, a model rebuild before your raise, or full capital advisory — let's start with a conversation about where you are and where you're headed.</p>
-      <div class="cta-buttons">
-        <a href="about.html#contact" class="btn-primary">Schedule a Call</a>
-        <a href="thesis-matching.html" class="btn-secondary">Analyze My Deck First</a>
       </div>
     </div>
   </section>
 
   <!-- ══ Footer ═══════════════════════════════════════════════ -->
   <footer class="footer">
-    <div class="footer-bg" aria-hidden="true"></div>
     <div class="footer-content">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-            <span class="logo-name">HypeFi</span>
+            <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+            <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
           </div>
           <p class="footer-brand-desc">An AI-driven investment banking layer for early-stage companies. Turning startup decks into investor-ready deals.</p>
           <div class="footer-socials">
@@ -481,8 +441,7 @@
       opt.addEventListener('click', () => opt.classList.toggle('selected'));
     });
     document.getElementById('heroConsultSubmit')?.addEventListener('click', function() {
-      this.textContent = '✓ Submitted — We\'ll be in touch soon.';
-      this.style.background = 'var(--teal)';
+      this.textContent = '✓ Received — we\'ll be in touch soon';
       this.disabled = true;
     });
   </script>

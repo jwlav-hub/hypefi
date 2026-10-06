@@ -13,8 +13,8 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-        <span class="logo-name">HypeFi</span>
+        <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+        <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -22,13 +22,13 @@
         <li><a href="about.html">About Us</a></li>
       </ul>
       <a href="thesis-matching.html" class="nav-cta">Upload Your Deck</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="outsourced-cfo.html">Outsourced CFO</a>
     <a href="about.html">About Us</a>
@@ -37,24 +37,21 @@
 
   <!-- ══ Page Hero ═══════════════════════════════════════════ -->
   <section class="page-hero">
+    <canvas id="mesh-canvas" class="mesh-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
     <div class="container">
       <div class="page-hero-content">
         <div class="section-label">Outsourced CFO</div>
-        <h1 class="section-title" style="max-width:700px">Strategic Financial Leadership, Without the Full-Time Cost.</h1>
+        <h1 class="section-title">Strategic Financial Leadership, Without the Full-Time Cost.</h1>
         <p class="section-sub" style="margin-bottom:0">
           HypeFi embeds as your fractional CFO — bringing institutional-grade financial strategy, investor-ready reporting, and hands-on capital advisory to early-stage and growth-stage companies at a fraction of the cost of an in-house hire.
         </p>
       </div>
     </div>
-    <div class="page-hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,20 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/>
-      </svg>
-    </div>
   </section>
 
   <!-- ══ Services Grid ════════════════════════════════════════ -->
-  <section style="background:var(--off-white);padding:100px 0 80px">
+  <section class="section section--mist">
     <div class="container">
       <div class="section-label">Core Services</div>
       <h2 class="section-title">What We Do</h2>
@@ -115,14 +112,13 @@
   <section class="engagement-section">
     <div class="container">
       <div class="section-label">Engagement Models</div>
-      <h2 class="section-title">How We Work Together</h2>
+      <h2 class="section-title">Let&rsquo;s Get to Work!</h2>
       <p class="section-sub">Flexible structures designed to match your stage, velocity, and budget — with no long-term lock-in.</p>
 
       <div class="engagement-grid">
 
         <div class="engagement-card">
           <h3 class="engagement-title">Fractional CFO</h3>
-          <p class="engagement-price">Monthly Retainer — Starting at $3,500/mo</p>
           <ul class="engagement-list">
             <li>Dedicated CFO embedded in your team</li>
             <li>Weekly leadership team syncs</li>
@@ -135,7 +131,6 @@
 
         <div class="engagement-card">
           <h3 class="engagement-title">Project-Based</h3>
-          <p class="engagement-price">Fixed Scope — Custom Quoted</p>
           <ul class="engagement-list">
             <li>Financial model build or rebuild</li>
             <li>Fundraising data room preparation</li>
@@ -148,7 +143,6 @@
 
         <div class="engagement-card">
           <h3 class="engagement-title">Capital Advisory</h3>
-          <p class="engagement-price">Retainer + Success Fee</p>
           <ul class="engagement-list">
             <li>Full fundraising campaign management</li>
             <li>Investor thesis & narrative development</li>
@@ -164,65 +158,50 @@
   </section>
 
   <!-- ══ Why HypeFi CFO ═══════════════════════════════════════ -->
-  <section style="background:var(--white);padding:100px 0;border-top:1px solid var(--border)">
+  <section class="section section--light">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div class="diff-grid">
         <div>
           <div class="section-label">The HypeFi Difference</div>
-          <h2 class="section-title" style="margin-bottom:24px">Finance Strategy Meets Capital Access</h2>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:20px">
+          <h2 class="section-title">Finance Strategy Meets Capital Access</h2>
+          <p class="body-copy">
             Most fractional CFOs stop at financial reporting. HypeFi goes further — combining rigorous financial management with an active capital formation engine. Your CFO and your fundraising strategy are built in the same system.
           </p>
-          <p style="font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:36px">
+          <p class="body-copy" style="margin-bottom:2.2rem">
             When it's time to raise, you're not starting over with a new advisor. The financial infrastructure we built together becomes the foundation of your investor materials — no translation layer, no relearning curve.
           </p>
-          <a href="about.html#contact" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--soft-white);font-size:15px;font-weight:600;padding:15px 32px;border-radius:10px;text-decoration:none;transition:background 0.2s">
-            Start a Conversation →
-          </a>
+          <a href="about.html#contact" class="btn-primary">Start a Conversation →</a>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">10×</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">More cost-effective than a full-time CFO hire at the same experience level</div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card-num">10<span class="unit">×</span></div>
+            <div class="stat-card-text">More cost-effective than a full-time CFO hire at the same experience level</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">48h</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Typical time to first deliverable from engagement kickoff</div>
+          <div class="stat-card">
+            <div class="stat-card-num">48<span class="unit">h</span></div>
+            <div class="stat-card-text">Typical time to first deliverable from engagement kickoff</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">AI</div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Investor matching engine integrated directly into every capital raise engagement</div>
+          <div class="stat-card">
+            <div class="stat-card-num">AI</div>
+            <div class="stat-card-text">Investor matching engine integrated directly into every capital raise engagement</div>
           </div>
-          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--teal);margin-bottom:8px">Seed<span style="font-size:18px">→B</span></div>
-            <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">Stage range we serve — pre-seed through Series B and growth equity</div>
+          <div class="stat-card">
+            <div class="stat-card-num">Seed<small>→B</small></div>
+            <div class="stat-card-text">Stage range we serve — pre-seed through Series B and growth equity</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ CTA ══════════════════════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="cta-inner">
-      <h2 class="cta-title">Ready to Build Your Financial Infrastructure?</h2>
-      <p class="cta-sub">Whether you need a fractional CFO, a model rebuild before your raise, or full capital advisory — let's start with a conversation about where you are and where you're headed.</p>
-      <div class="cta-buttons">
-        <a href="about.html#contact" class="btn-primary">Schedule a Call</a>
-        <a href="thesis-matching.html" class="btn-secondary">Analyze My Deck First</a>
       </div>
     </div>
   </section>
 
   <!-- ══ Footer ═══════════════════════════════════════════════ -->
   <footer class="footer">
-    <div class="footer-bg" aria-hidden="true"></div>
     <div class="footer-content">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-            <span class="logo-name">HypeFi</span>
+            <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+            <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
           </div>
           <p class="footer-brand-desc">An AI-driven investment banking layer for early-stage companies. Turning startup decks into investor-ready deals.</p>
           <div class="footer-socials">

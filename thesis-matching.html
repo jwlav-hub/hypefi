@@ -13,21 +13,21 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
-        <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-        <span class="logo-name">HypeFi</span>
+        <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+        <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
       <a href="thesis-matching.html" class="nav-cta">Upload Your Deck</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="thesis-matching.html" class="nav-cta-mobile">Upload Your Deck</a>
@@ -35,19 +35,16 @@
 
   <!-- ══ Page Hero ═══════════════════════════════════════════ -->
   <section class="page-hero">
+    <canvas id="mesh-canvas" class="mesh-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
     <div class="container">
       <div class="page-hero-content">
         <div class="section-label">AI Thesis Matching</div>
-        <h1 class="section-title" style="max-width:680px">Submit Your Deck. Receive Your Investor Match Report.</h1>
+        <h1 class="section-title">Submit Your Deck. Receive Your Investor Match Report.</h1>
         <p class="section-sub" style="margin-bottom:0">
           Our AI ingests your materials, extracts a machine-readable investment thesis, and maps it against a curated investor database — outputting a ranked, rationale-based match list alongside a full investment readiness assessment.
         </p>
       </div>
-    </div>
-    <div class="page-hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,20 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--off-white)"/>
-      </svg>
     </div>
   </section>
 
@@ -72,7 +69,7 @@
           </div>
         </div>
 
-        <p style="text-align:center;font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-purple);margin-bottom:20px">⚠ Currently Under Construction</p>
+        <p class="form-notice">Currently Under Construction</p>
 
         <div class="form-card">
 
@@ -86,7 +83,7 @@
             <div class="form-grid">
               <div class="form-group full">
                 <label for="company-name">Company Name</label>
-                <input type="text" id="company-name" placeholder="Acme Technologies Inc.">
+                <input type="text" id="company-name">
               </div>
               <div class="form-group">
                 <label for="sector">Sector / Vertical</label>
@@ -182,31 +179,31 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" placeholder="Joseph">
+                <input type="text" id="first-name">
               </div>
               <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" placeholder="Laviolette">
+                <input type="text" id="last-name">
               </div>
               <div class="form-group full">
                 <label for="email">Email Address <span class="form-hint">— we'll send your report here</span></label>
-                <input type="email" id="email" placeholder="you@company.com">
+                <input type="email" id="email">
               </div>
               <div class="form-group">
                 <label for="phone">Phone <span class="form-hint">(optional)</span></label>
-                <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+                <input type="tel" id="phone">
               </div>
               <div class="form-group">
                 <label for="title">Your Title / Role</label>
-                <input type="text" id="title" placeholder="Co-Founder & CEO">
+                <input type="text" id="title">
               </div>
               <div class="form-group full">
                 <label for="linkedin">LinkedIn Profile <span class="form-hint">(optional — improves matching)</span></label>
-                <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                <input type="url" id="linkedin">
               </div>
               <div class="form-group full">
                 <label for="website">Company Website <span class="form-hint">(optional)</span></label>
-                <input type="url" id="website" placeholder="https://yourcompany.com">
+                <input type="url" id="website">
               </div>
             </div>
             <div class="form-actions">
@@ -316,10 +313,10 @@
             <div class="form-grid">
               <!-- Primary Upload -->
               <div class="form-group full">
-                <label>Pitch Deck <span style="color:#e05c5c">*</span> <span class="form-hint">— PDF format, max 50MB</span></label>
+                <label>Pitch Deck <span class="req">*</span> <span class="form-hint">— PDF format, max 50MB</span></label>
                 <div class="upload-zone">
                   <input type="file" accept=".pdf" aria-label="Upload pitch deck">
-                  <div class="upload-icon">📄</div>
+                  <div class="upload-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg></div>
                   <p class="upload-title">Drop your deck here or click to browse</p>
                   <p class="upload-sub">PDF only &nbsp;·&nbsp; <span>Max 50 MB</span></p>
                 </div>
@@ -332,17 +329,17 @@
                   <div class="upload-optional-list">
                     <label class="upload-opt-item">
                       <input type="file" accept=".pdf,.xlsx,.xls" aria-label="Upload financial model">
-                      <span class="upload-opt-icon">📊</span>
+                      <span class="upload-opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
                       <span>Financial Model <span class="form-hint">— Excel or PDF</span></span>
                     </label>
                     <label class="upload-opt-item">
                       <input type="file" accept=".pdf,.docx" aria-label="Upload executive summary">
-                      <span class="upload-opt-icon">📋</span>
+                      <span class="upload-opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="1"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg></span>
                       <span>Executive Summary / Investment Memo <span class="form-hint">— PDF or Word</span></span>
                     </label>
                     <label class="upload-opt-item">
                       <input type="file" accept=".pdf,.xlsx,.csv" aria-label="Upload data room">
-                      <span class="upload-opt-icon">🗄️</span>
+                      <span class="upload-opt-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
                       <span>Supporting Data / Cap Table <span class="form-hint">— any format</span></span>
                     </label>
                   </div>
@@ -351,10 +348,10 @@
 
               <!-- Terms -->
               <div class="form-group full">
-                <label class="check-option" style="border-radius:10px;padding:14px 16px">
+                <label class="check-option check-option--wide">
                   <input type="checkbox" id="terms">
                   <span class="check-box"></span>
-                  <span style="font-size:13px;color:var(--text-secondary);font-weight:400;line-height:1.5">
+                  <span class="check-text">
                     I agree that HypeFi may use my submitted materials to generate an AI-powered analysis report. All materials are handled with strict confidentiality.
                   </span>
                 </label>
@@ -381,7 +378,7 @@
   <section class="receive-section">
     <div class="container">
       <div class="section-label">Your Report Includes</div>
-      <h2 class="section-title" style="margin-bottom:12px">What You'll Receive</h2>
+      <h2 class="section-title">What You'll Receive</h2>
       <p class="section-sub">A polished, institutional-grade report delivered to your inbox — built to function as a founder tool, a VC leave-behind, and a qualification layer for advisory.</p>
 
       <div class="receive-grid">
@@ -433,13 +430,12 @@
 
   <!-- ══ Footer ═══════════════════════════════════════════════ -->
   <footer class="footer">
-    <div class="footer-bg" aria-hidden="true"></div>
     <div class="footer-content">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="Graphics/HypeFi Logo v7.png" alt="HypeFi" class="logo-img">
-            <span class="logo-name">HypeFi</span>
+            <img src="Graphics/HypeFi Logo v7 - steel.png" alt="HypeFi" class="logo-img">
+            <span class="logo-name">Hype<span class="logo-accent">Fi</span></span>
           </div>
           <p class="footer-brand-desc">An AI-driven investment banking layer for early-stage companies. Turning startup decks into investor-ready deals.</p>
           <div class="footer-socials">
